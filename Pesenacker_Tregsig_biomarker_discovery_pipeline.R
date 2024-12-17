@@ -31,7 +31,7 @@ setwd("../data/")
 InputDirectory <- getwd()
 setwd(PrimaryDirectory)
 
-###################3
+###################
 setwd(InputDirectory)
 list.files(InputDirectory, ".csv")
 log2_noflag_data <- read.csv(".csv")   # Enter normalised log2 data file name within ""
@@ -61,6 +61,14 @@ set.seed(222) #random number generation for reproducible results
 ind <- sample(2, nrow(data), replace = T, prob = c(0.5, 0.5)) #proportion of data used for training and test
 train <- data[ind==1,] 
 test <- data[ind==2,]
+
+# # Alternative approach: instead of randomly assigning each row in the data either to the test or train set,
+# #                       select a random half of the rows to be assigned to the training set,
+# #                       and the rest to the testing set.
+# # The alternative approach avoids more than half of the dataset to be assigned to one of the sets.
+# ind <- sort(sample(nrow(data), floor(nrow(data)/2)))
+# train <- data[ind,]
+# test <- data[-ind,]
 
 custom <-  trainControl(method = "LOOCV",
                         verboseIter = T,
