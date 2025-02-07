@@ -48,9 +48,9 @@ write.csv(Jdata, 'Jdata.csv') # check joined data is correct
 #### read data #################
 data <- read.csv(".csv") # Enter file name within if no joining of metadata required, otherwise read Jdata ""
 data <- data.frame(data)
-data
-data <- data[-c(1)]  
-str(data) #note observations and variables
+data                     # Ensure data is loaded
+data <- data[-c(1)]      # Remove rownames column
+str(data)                # Note observations and variables
 #variable of interest= activity, prediction model to predict activity as function of other variables
 
 
