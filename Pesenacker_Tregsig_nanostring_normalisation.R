@@ -32,9 +32,6 @@ positive_control_flag <- (rccdata[["nacho"]][["Positive_factor"]] > 3 | rccdata[
 poscontrolflag <- rccdata[["nacho"]] %>%
   mutate(positive_control_flag)
 
-# Visualise table in Viewer - flags come up as red- NOT WORKING, NEED TO FIX
-poscontrolflag <- formattable(poscontrolflag, positive_control_flag = color_tile('green','red'))
-
 # Write CSV with flags
 write_csv(poscontrolflag, './output/poscontrolflag.csv')
 
